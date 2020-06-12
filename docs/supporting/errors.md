@@ -65,6 +65,17 @@ In previous versions of VS Code, you were allowed to use relative paths in your 
 
 > **Tip:** See the VS Code [debugging](/docs/editor/debugging.md) documentation for more information about `launch.json`, [debugger configuration](/docs/editor/debugging.md#launch-configurations), and [variable substitution](/docs/editor/variables-reference.md).
 
+## Windows Path used instead of WSL path
+
+FileNotFoundError: [Errno 2] No such file or directory: 'c:/Users/...'
+
+You expected to see a path starting with /mnt/c/Users not a drive letter and a colon.  A common cause for this is dragging your source code file into the vscode editor, instead of using the vscode Open File command (Ctrl O). Look at the tab on your editor, you'll see it starts with C:\Users - this is the giveaway. Workaround: use the File Open command to open the same file.
+
+If that is not possible, change your configuration to explicitly use the ${workspaceFolder} path as in this example:
+```
+"program": "${workspaceFolder}/program.py",
+```
+
 ## Didn't find a solution?
 
 ### GitHub issues
